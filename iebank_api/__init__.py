@@ -16,6 +16,8 @@ elif os.getenv('ENV') == 'ghci':
     print("Running in github mode")
     app.config.from_object('config.GithubCIConfig')
 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///local.db'
+
 db = SQLAlchemy(app)
 
 from iebank_api.models import Account
